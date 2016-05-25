@@ -1,0 +1,14 @@
+before_script:
+  - docker info
+  - docker login -e philario@catalystdevworks.com -u catalystdevlabs -p q1w2e3r4t5
+
+build:
+  image: maven:3.3.3-jdk-8
+  script:
+    - mvn clean -X package docker:build
+    - docker push catalystdevlabs/aperture-api
+  only:
+    - master
+  tags:
+    - docker
+    - aws

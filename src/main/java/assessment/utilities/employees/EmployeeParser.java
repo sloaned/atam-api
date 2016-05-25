@@ -92,7 +92,7 @@ public class EmployeeParser {
             return null;
         } else {
             //if they're using the old catalystitservices email replace with devworks one, otherwise leave as is
-            return emailParts[0] + "@" + (emailParts[1].toLowerCase().equals(OLD_EMAIL_URL) ? CURRENT_EMAIL_URL : emailParts[1].toLowerCase());
+            return emailParts[0].toLowerCase() + "@" + (emailParts[1].toLowerCase().equals(OLD_EMAIL_URL) ? CURRENT_EMAIL_URL : emailParts[1].toLowerCase());
         }
     }
 

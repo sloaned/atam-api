@@ -58,15 +58,13 @@
         <dependency>
             <groupId>com.catalystdevworks</groupId>
             <artifactId>aperture-entities</artifactId>
-            <version>0.1.6</version>
+            <version>0.1.9</version>
         </dependency>
-
         <dependency>
             <groupId>com.catalystdevworks</groupId>
             <artifactId>aperture-entities</artifactId>
             <type>test-jar</type>
-            <scope>test</scope>
-            <version>0.1.6</version>
+            <version>0.1.9</version>
         </dependency>
 
         <dependency>
@@ -215,19 +213,19 @@
             <version>1.9.5</version>
         </dependency>
 
-        <!--<dependency>-->
-            <!--<groupId>org.springframework.cloud</groupId>-->
-            <!--<artifactId>spring-cloud-starter-oauth2</artifactId>-->
-            <!--<version>1.0.3.RELEASE</version>-->
-        <!--</dependency>-->
-        <!--<dependency>-->
-            <!--<groupId>org.springframework.boot</groupId>-->
-            <!--<artifactId>spring-boot-starter-security</artifactId>-->
-        <!--</dependency>-->
-        <!--<dependency>-->
-            <!--<groupId>org.springframework.security.oauth</groupId>-->
-            <!--<artifactId>spring-security-oauth2</artifactId>-->
-        <!--</dependency>-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-oauth2</artifactId>
+            <version>1.0.3.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security.oauth</groupId>
+            <artifactId>spring-security-oauth2</artifactId>
+        </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>

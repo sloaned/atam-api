@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+
+    <Appenders>
+        <Console name="STDOUT" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+        </Console>
+
+        <File name="FILE" fileName="src/main/resources/logs/aperture-data.log" immediateFlush="true">
+            <PatternLayout>
+                <pattern>%d %p %C{1.} [%t] %m%n</pattern>
+            </PatternLayout>
+        </File>
+    </Appenders>
+
+    <Loggers>
+
+        <Logger name = "com.catalystdevworks.assessment.fileLogger" level = "ALL" additivity = "TRUE">
+            <AppenderRef ref="FILE" level = "ALL">
+
+            </AppenderRef>
+        </Logger>
+
+        <Root level="info">
+            <AppenderRef ref="STDOUT"/>
+            <AppenderRef ref="FILE" level = "WARN"/>
+        </Root>
+
+    </Loggers>
+</Configuration>

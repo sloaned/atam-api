@@ -11,11 +11,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     public void configure(HttpSecurity http) throws Exception {
-        http.antMatcher("/**").authorizeRequests().anyRequest()
+      /*  http.antMatcher("/**").authorizeRequests().anyRequest()
                 .authenticated().and().csrf()
                 .disable()
                 .logout().logoutUrl("/logout").permitAll()
-                .logoutSuccessUrl("/");
+                .logoutSuccessUrl("/"); */
+
     }
 
 }

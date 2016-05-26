@@ -1,17 +1,17 @@
 server: #can be removed when hosted on a server, this is to prevent conflicts when running on localhost
   port: 8090
 
-#security:
-#  user:
-#    password: user
-#  ignored: /,/favicon.ico,/index.html
-#  sessions: ALWAYS
-#  oauth2:
-#    sso:
-#      loginPath: /login
-#management:
-#  security:
-#    role: HERO
+security:
+  user:
+    password: user
+  ignored: /,/favicon.ico,/index.html
+  sessions: ALWAYS
+  oauth2:
+    sso:
+      loginPath: /login
+management:
+  security:
+    role: HERO
 
 logging:
   level:
@@ -23,6 +23,8 @@ import: #delete or set to false if you don't want a fresh import from the employ
   kudos: true
   teams: true
   assessments: true
+
+---
 
 spring:
   profiles: default

@@ -38,26 +38,44 @@ public class TeamService extends BaseService<TeamApi> implements ITeamApiService
             teamApi.setIsActive(team.getIsActive());
             teamApi.setName(team.getName());
             teamApi.setReviewPeriods(team.getReviewPeriods());
-            teamApi.setVersion(team.getVersion());
             teamApi.setSummaryScore(team.getSummaryScore());
-         /*   ArrayList<MemberApi> members = new ArrayList<MemberApi>();
-
-            UserService userService = new UserService();
-
-            for (Member member : team.getMemberList()) {
-                MemberApi memberApi = new MemberApi();
-                memberApi.setActive(member.getActive());
-                memberApi.setAddedOn(member.getAddedOn());
-                memberApi.setRemovedOn(member.getRemovedOn());
-                memberApi.setRole(member.getRole());
-                memberApi.setUser(userService.get(member.getUserId()));
-
-                members.add(memberApi);
-            }
-        */
-         //   teamApi.setMemberList(members);
 
             teams.add(teamApi);
+        }
+
+        return teams;
+    }
+
+    public List<TeamApi> getTeamsByUser(String id) throws HttpException {
+        ArrayList<TeamApi> teams = new ArrayList<TeamApi>();
+
+        List<Team> teamList = client.getAll(url, Team.class);
+        boolean match;
+
+        for (Team team : teamList) {
+
+            match = false;
+            for (Member member : team.getMemberList()) {
+                if (id.equals(member.getUserId())) {
+                    match = true;
+                    break;
+                }
+            }
+
+            if (match) {
+                TeamApi teamApi = new TeamApi();
+
+                teamApi.setId(team.getId());
+                teamApi.setAvatar(team.getAvatar());
+                teamApi.setDescription(team.getDescription());
+                teamApi.setIsActive(team.getIsActive());
+                teamApi.setName(team.getName());
+                teamApi.setReviewPeriods(team.getReviewPeriods());
+                teamApi.setSummaryScore(team.getSummaryScore());
+
+                teams.add(teamApi);
+            }
+
         }
 
         return teams;

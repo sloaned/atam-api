@@ -4,7 +4,7 @@ server: #can be removed when hosted on a server, this is to prevent conflicts wh
 security:
   user:
     password: user
-  ignored: /,/favicon.ico,/index.html
+  ignored: /favicon.ico
   sessions: ALWAYS
   oauth2:
     sso:

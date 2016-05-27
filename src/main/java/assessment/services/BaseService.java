@@ -31,7 +31,7 @@ public abstract class BaseService<T> implements IBaseService<T> {
 
     @Override
     public List<T> getAll() throws HttpException {
-        return client.getAll(url, type);
+        return client.getAll(url + "?size=300000", type);
     }
 
     @Override

@@ -116,28 +116,6 @@ public class TeamService extends BaseService<TeamApi> implements ITeamApiService
     }
 
 
-    /*
-    public Member(String userId, Boolean isActive, Date addedOn, Date removedOn, Role role) {
-        this.userId = userId;
-        this.isActive = isActive;
-        this.addedOn = addedOn;
-        this.removedOn = removedOn;
-        this.role = role;
-    }
-
-
-    public Team(String name, Boolean isActive, List<Member> memberList, String avatar, String description, List<ReviewPeriod> reviewPeriods, Double summaryScore) {
-        this.name = name;
-        this.isActive = isActive;
-        this.memberList = memberList;
-        this.avatar = avatar;
-        this.description = description;
-        this.reviewPeriods = reviewPeriods;
-        this.summaryScore = summaryScore;
-        this.version = Constants.TEAM_CURRENT_VERSION;
-    }
-     */
-
     @Override
     public TeamApi create(TeamApi teamApi) throws HttpException {
         //return client.post(url, team, type);

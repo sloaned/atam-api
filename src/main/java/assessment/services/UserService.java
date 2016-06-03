@@ -27,6 +27,7 @@ public class UserService extends BaseService<User> implements IUserService {
         List<User> users = client.getAll(url + "?size=300000", User.class);
         System.out.println("in getUserByEmail, email = " + email);
 
+        System.out.println("users = " + users.toString());
         for (User user : users) {
             if (user.getEmail().equals(email)) {
                 return user;

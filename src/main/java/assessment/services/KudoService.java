@@ -1,5 +1,6 @@
 package assessment.services;
 
+import assessment.entities.FCMTokenApi;
 import assessment.entities.KudoApi;
 import assessment.entities.kudo.Kudo;
 import assessment.entities.user.User;
@@ -7,9 +8,20 @@ import assessment.services.interfaces.IKudoApiService;
 import assessment.utilities.UrlConstants;
 import assessment.utilities.httpclient.jsonparser.DataJsonParser;
 import assessment.utilities.httpclient.jsonparser.IJsonParser;
+import com.google.gson.Gson;
 import org.apache.http.HttpException;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.StringEntity;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClientBuilder;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -122,6 +134,8 @@ public class KudoService extends BaseService<KudoApi> implements IKudoApiService
         System.out.println("returnKudo  date = " + returnKudo.getSubmittedDate());
         System.out.println("returnKudo comment = " + returnKudo.getComment());
 
+        notifyFirebase(kudoApi);
+
         return kudoApi;
       /*  if (returnKudo == kudo) {
             return kudoApi;
@@ -146,4 +160,59 @@ public class KudoService extends BaseService<KudoApi> implements IKudoApiService
         }
         return null;
     }
+
+    public void notifyFirebase(KudoApi kudo) {
+        TokenService tokenService = new TokenService();
+        FCMTokenApi tokens = null;
+        try {
+            tokens = tokenService.getTokenByUser(kudo.getReviewedId());
+        } catch (HttpException e) {
+            e.printStackTrace();
+        }
+
+        for (String s : tokens.getTokens()) {
+            Gson gson = new Gson();
+            String gsonKudo = gson.toJson(kudo);
+            JSONObject kudoObject = null;
+            try {
+                kudoObject = new JSONObject(gsonKudo);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+
+            JSONObject json = new JSONObject();
+            json.put("to", s);
+            json.put("message", "New Kudo");
+            json.put("data", kudoObject);
+
+            System.out.println("notifying firebase");
+            CloseableHttpClient httpClient = HttpClientBuilder.create().build();
+
+            try {
+                HttpPost request = new HttpPost("https://fcm.googleapis.com/fcm/send");
+                StringEntity params = new StringEntity(json.toString());
+                request.addHeader("content-type", "application/json");
+                request.addHeader("Authorization", "key=AIzaSyBSbj4eAJ21dxfOb7h16MkQciZEjweT0DI");
+                request.setEntity(params);
+                httpClient.execute(request);
+
+                System.out.println("request posted successfully");
+            } catch (Exception e) {
+                e.printStackTrace();
+            } finally {
+                try {
+                    httpClient.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        }
+
+
+
+
+    }
+
 }

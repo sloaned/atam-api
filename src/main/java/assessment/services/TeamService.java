@@ -27,7 +27,7 @@ public class TeamService extends BaseService<TeamApi> implements ITeamApiService
         //return client.getAll(url, type);
         ArrayList<TeamApi> teams = new ArrayList<TeamApi>();
 
-        List<Team> teamList = client.getAll(url, Team.class);
+        List<Team> teamList = client.getAll(url + "?size=3000000", Team.class);
 
         for (Team team : teamList) {
             TeamApi teamApi = new TeamApi();

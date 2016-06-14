@@ -23,6 +23,7 @@ import: #delete or set to false if you don't want a fresh import from the employ
   kudos: true
   teams: true
   assessments: true
+  tokens: true
 
 ---
 

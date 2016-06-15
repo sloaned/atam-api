@@ -70,7 +70,15 @@ public class UserController extends BaseController<User> {
         System.out.println(details.getTokenValue());
 
         HashMap userDetails = (HashMap) tokenServices.readAccessToken(details.getTokenValue()).getAdditionalInformation().get("userDetails");
-        String email = (userDetails.get("email")).toString();
+        System.out.println("userDetails: " + userDetails.toString());
+        String email;
+        String username = (userDetails.get("userName")).toString();
+        if (username.equals("atamldap")) {
+            email = "dsloane@catalystdevworks.com";
+        } else {
+            email = (userDetails.get("email")).toString();
+        }
+       // String email = (userDetails.get("email")).toString();
 
         System.out.println("email = " + email);
 

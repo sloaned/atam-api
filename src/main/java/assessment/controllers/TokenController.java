@@ -26,8 +26,20 @@ public class TokenController extends BaseController<FCMTokenApi> {
 
     protected Logger logger = LogManager.getLogger(this.getClass());
 
+    @RequestMapping(value="/delete/{userId}", method=RequestMethod.PUT)
+    public ResponseEntity<Response> deleteUserToken(@PathVariable String userId, @RequestBody String token) {
+        TokenService tokenService = new TokenService();
+        try {
+            Boolean response = tokenService.deleteUserToken(userId, token);
+            return new ResponseEntity<>(new SuccessfulResponse<>(response), HttpStatus.OK);
+        } catch (HttpException e) {
+            logger.error(e);
+            return createFailedResponse(e.getMessage());
+        }
+    }
+
     @RequestMapping(value="/addtoken/{userId}", method=RequestMethod.PUT)
-    public ResponseEntity<Response> AddTokenForUser(@PathVariable String userId, @RequestBody FCMTokenApi token) {
+    public ResponseEntity<Response> addTokenForUser(@PathVariable String userId, @RequestBody FCMTokenApi token) {
         TokenService tokenService = new TokenService();
         try {
             FCMTokenApi theToken = tokenService.addTokenForUser(userId, token);

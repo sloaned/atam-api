@@ -40,7 +40,6 @@ public class TokenService extends BaseService<FCMTokenApi> implements ITokenApiS
         return null;
     }
 
-    // currently only adds tokens, doesn't delete them
     public FCMTokenApi addTokenForUser(String userId, FCMTokenApi token) throws HttpException {
        // FCMTokenApi userToken = getTokenByUser(userId);
         FCMToken userToken = null;
@@ -49,11 +48,8 @@ public class TokenService extends BaseService<FCMTokenApi> implements ITokenApiS
         List<FCMToken> tokenList = client.getAll(url + "?size=3000000", FCMToken.class);
 
         for (FCMToken ft: tokenList) {
-
             if (ft.getUserId().equals(userId)) {
-
                 userToken = ft;
-
             }
         }
 
@@ -76,5 +72,38 @@ public class TokenService extends BaseService<FCMTokenApi> implements ITokenApiS
         FCMToken returnToken = client.put(url + "/" + userToken.getId(), userToken, FCMToken.class);
 
         return token;
+    }
+
+    public Boolean deleteUserToken(String userId, String token) throws HttpException {
+        FCMToken userToken = null;
+        ArrayList<FCMToken> tokens = new ArrayList<FCMToken>();
+
+        List<FCMToken> tokenList = client.getAll(url + "?size=3000000", FCMToken.class);
+
+        for (FCMToken ft: tokenList) {
+            if (ft.getUserId().equals(userId)) {
+                userToken = ft;
+            }
+        }
+
+        // user has no fcm tokens yet, and yet a delete request references them,
+        // so this shouldn't happen
+        if (userToken == null) {
+            return true;
+        }
+        // update existing token
+
+        List<String> currentTokens = userToken.getTokens();
+        List<String> newTokens = new ArrayList<String>();
+        for (String s : currentTokens) {
+            if (!s.equals(token)) {
+                newTokens.add(s);
+            }
+        }
+        userToken.setTokens(newTokens);
+
+        FCMToken returnToken = client.put(url + "/" + userToken.getId(), userToken, FCMToken.class);
+
+        return true;
     }
 }

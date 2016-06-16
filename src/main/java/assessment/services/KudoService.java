@@ -135,7 +135,7 @@ public class KudoService extends BaseService<KudoApi> implements IKudoApiService
         System.out.println("returnKudo  date = " + returnKudo.getSubmittedDate());
         System.out.println("returnKudo comment = " + returnKudo.getComment());
 
-        notifyKudoRecipient(kudoApi);
+        //notifyKudoRecipient(kudoApi);
 
         return kudoApi;
 

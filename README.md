@@ -20,7 +20,7 @@ A utility to retrieve User data from Replicon and parse it into usable data exis
 This repository is configured to automatically build on check-in.  
 See .gitlab-ci.yml file for automated build steps.
 
-### Local Build (runs on port 8090)
+### Local Build (runs on port 8090).
 
 $ mvn clean package docker:build  
 $ docker push catalystdevlabs/team-assessment-api [Optional]

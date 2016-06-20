@@ -4,7 +4,7 @@ import assessment.entities.MemberApi;
 import assessment.entities.TeamApi;
 import assessment.entities.team.Member;
 import assessment.entities.team.Team;
-import assessment.entities.user.User;
+import assessment.entities.User;
 import assessment.services.interfaces.ITeamApiService;
 import assessment.utilities.UrlConstants;
 import assessment.utilities.httpclient.jsonparser.DataJsonParser;
@@ -12,7 +12,9 @@ import org.apache.http.HttpException;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class TeamService extends BaseService<TeamApi> implements ITeamApiService {
@@ -96,7 +98,7 @@ public class TeamService extends BaseService<TeamApi> implements ITeamApiService
         teamApi.setReviewPeriods(team.getReviewPeriods());
         teamApi.setVersion(team.getVersion());
         teamApi.setSummaryScore(team.getSummaryScore());
-        ArrayList<MemberApi> members = new ArrayList<MemberApi>();
+        Set<MemberApi> members = new HashSet<>();
 
         UserService userService = new UserService();
 
@@ -119,7 +121,7 @@ public class TeamService extends BaseService<TeamApi> implements ITeamApiService
     @Override
     public TeamApi create(TeamApi teamApi) throws HttpException {
         //return client.post(url, team, type);
-        List<Member> teamMembers = new ArrayList<Member>();
+        Set<Member> teamMembers = new HashSet<>();
         for(MemberApi memberApi : teamApi.getMemberList()) {
             Member member = new Member(memberApi.getUser().getId(), memberApi.getActive(), memberApi.getAddedOn(),
                     memberApi.getRemovedOn(), memberApi.getRole());
@@ -145,7 +147,7 @@ public class TeamService extends BaseService<TeamApi> implements ITeamApiService
             throw e;
         }
 
-        List<Member> teamMembers = new ArrayList<Member>();
+        Set<Member> teamMembers = new HashSet<>();
         for(MemberApi memberApi : teamApi.getMemberList()) {
             Member member = new Member(memberApi.getUser().getId(), memberApi.getActive(), memberApi.getAddedOn(),
                     memberApi.getRemovedOn(), memberApi.getRole());

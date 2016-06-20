@@ -1,7 +1,7 @@
 package assessment.services;
 
 
-import assessment.entities.user.User;
+import assessment.entities.User;
 import assessment.utilities.UrlConstants;
 import assessment.utilities.httpclient.HttpClient;
 import assessment.utilities.httpclient.jsonparser.DataJsonParser;

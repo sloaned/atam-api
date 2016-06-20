@@ -1,12 +1,13 @@
 package assessment.entities;
 
-import assessment.entities.feedback.Feedback;
-import assessment.entities.user.User;
+import assessment.entities.Feedback;
+import assessment.entities.User;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import org.hibernate.validator.constraints.Range;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by dsloane on 6/1/2016.
@@ -18,13 +19,13 @@ public class ReviewApi {
     private User reviewer;
     @JsonFormat(pattern = "MM/dd/yyyy", timezone="PST")
     private Date submittedDate;
-    private List<Feedback> feedback;
+    private Set<Feedback> feedback;
     private String teamName;
     @Range(min = 1, max = 5)
     private Double summaryScore;
 
 
-    public ReviewApi(String id, User reviewer, String reviewedId, Date submittedDate, List<Feedback> feedback,
+    public ReviewApi(String id, User reviewer, String reviewedId, Date submittedDate, Set<Feedback> feedback,
                   Double summaryScore, String teamName) {
         this.id = id;
         this.reviewer = reviewer;
@@ -71,11 +72,11 @@ public class ReviewApi {
         this.submittedDate = submittedDate;
     }
 
-    public List<Feedback> getFeedback() {
+    public Set<Feedback> getFeedback() {
         return feedback;
     }
 
-    public void setFeedback(List<Feedback> feedback) {
+    public void setFeedback(Set<Feedback> feedback) {
         this.feedback = feedback;
     }
 

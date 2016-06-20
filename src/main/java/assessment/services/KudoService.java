@@ -2,8 +2,8 @@ package assessment.services;
 
 import assessment.entities.FCMTokenApi;
 import assessment.entities.KudoApi;
-import assessment.entities.kudo.Kudo;
-import assessment.entities.user.User;
+import assessment.entities.Kudo;
+import assessment.entities.User;
 import assessment.services.interfaces.IKudoApiService;
 import assessment.utilities.FirebaseConstants;
 import assessment.utilities.UrlConstants;

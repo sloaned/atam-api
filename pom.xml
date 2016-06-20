@@ -12,9 +12,9 @@
             <snapshots>
                 <enabled>true</enabled>
             </snapshots>
-            <id>archiva.internal</id>
+            <id>archiva.ata</id>
             <name>Archiva Managed Internal Repository</name>
-            <url>http://docker.brainsphere.io:8080/repository/devlabs-aa</url>
+            <url>http://172.17.30.21/repository/devlabs-ata</url>
         </repository>
 
     </repositories>
@@ -78,13 +78,13 @@
         <dependency>
             <groupId>com.catalystdevworks</groupId>
             <artifactId>aperture-entities</artifactId>
-            <version>0.1.9</version>
+            <version>0.2.1</version>
         </dependency>
         <dependency>
             <groupId>com.catalystdevworks</groupId>
             <artifactId>aperture-entities</artifactId>
             <type>test-jar</type>
-            <version>0.1.9</version>
+            <version>0.2.1</version>
         </dependency>
 
         <dependency>

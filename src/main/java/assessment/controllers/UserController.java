@@ -3,7 +3,7 @@ package assessment.controllers;
 import assessment.entities.Profile;
 import assessment.entities.Response;
 import assessment.entities.SuccessfulResponse;
-import assessment.entities.user.User;
+import assessment.entities.User;
 import assessment.services.UserService;
 import assessment.services.interfaces.IUserService;
 import com.google.common.collect.ObjectArrays;

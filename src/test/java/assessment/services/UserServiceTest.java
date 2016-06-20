@@ -1,6 +1,6 @@
 package assessment.services;
 
-import assessment.entities.user.User;
+import assessment.entities.User;
 import assessment.factories.user.UserFactory;
 import assessment.factories.user.UserOption;
 import assessment.utilities.httpclient.HttpClient;

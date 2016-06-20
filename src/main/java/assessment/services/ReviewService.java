@@ -1,8 +1,8 @@
 package assessment.services;
 
 import assessment.entities.ReviewApi;
-import assessment.entities.review.Review;
-import assessment.entities.user.User;
+import assessment.entities.Review;
+import assessment.entities.User;
 import assessment.services.interfaces.IReviewApiService;
 import assessment.utilities.UrlConstants;
 import assessment.utilities.httpclient.jsonparser.DataJsonParser;

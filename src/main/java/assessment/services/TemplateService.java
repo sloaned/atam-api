@@ -1,6 +1,6 @@
 package assessment.services;
 
-import assessment.entities.template.Template;
+import assessment.entities.Template;
 import assessment.services.interfaces.ITemplateService;
 import assessment.utilities.UrlConstants;
 import assessment.utilities.httpclient.jsonparser.DataJsonParser;

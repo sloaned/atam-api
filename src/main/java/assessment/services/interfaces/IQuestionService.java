@@ -1,6 +1,6 @@
 package assessment.services.interfaces;
 
-import assessment.entities.question.Question;
+import assessment.entities.Question;
 
 /**
  * Created by jjacobson on 4/11/16.

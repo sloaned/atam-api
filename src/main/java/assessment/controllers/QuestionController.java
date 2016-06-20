@@ -1,6 +1,6 @@
 package assessment.controllers;
 
-import assessment.entities.question.Question;
+import assessment.entities.Question;
 import assessment.services.interfaces.IQuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;

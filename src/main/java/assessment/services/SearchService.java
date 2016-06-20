@@ -2,7 +2,7 @@ package assessment.services;
 
 import assessment.entities.SearchResult;
 import assessment.entities.TeamApi;
-import assessment.entities.user.User;
+import assessment.entities.User;
 import assessment.services.interfaces.ISearchService;
 import org.apache.http.HttpException;
 import org.springframework.stereotype.Service;

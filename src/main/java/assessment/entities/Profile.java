@@ -1,9 +1,9 @@
 package assessment.entities;
 
-import assessment.entities.kudo.Kudo;
-import assessment.entities.review.Review;
+import assessment.entities.Kudo;
+import assessment.entities.Review;
 import assessment.entities.team.Team;
-import assessment.entities.user.User;
+import assessment.entities.User;
 
 import java.util.ArrayList;
 import java.util.List;

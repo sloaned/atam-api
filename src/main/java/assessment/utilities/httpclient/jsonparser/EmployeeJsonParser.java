@@ -1,6 +1,6 @@
 package assessment.utilities.httpclient.jsonparser;
 
-import assessment.entities.user.User;
+import assessment.entities.User;
 import assessment.utilities.employees.EmployeeParser;
 import org.json.JSONArray;
 import org.json.JSONObject;

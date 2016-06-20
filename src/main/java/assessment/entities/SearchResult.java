@@ -1,7 +1,7 @@
 package assessment.entities;
 
 import assessment.entities.team.Team;
-import assessment.entities.user.User;
+import assessment.entities.User;
 
 /**
  * Created by dsloane on 6/1/2016.

@@ -1,6 +1,6 @@
 package assessment.controllers;
 
-import assessment.entities.template.Template;
+import assessment.entities.Template;
 import assessment.services.interfaces.ITemplateService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;

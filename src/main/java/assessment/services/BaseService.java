@@ -12,6 +12,7 @@ import java.util.List;
 
 /**
  * Abstract implementation of IBaseService
+ *
  * @param <T> The type
  */
 public abstract class BaseService<T> implements IBaseService<T> {

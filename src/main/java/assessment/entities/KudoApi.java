@@ -1,6 +1,5 @@
 package assessment.entities;
 
-import assessment.entities.user.User;
 import assessment.utilities.Constants;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import org.hibernate.validator.constraints.Length;

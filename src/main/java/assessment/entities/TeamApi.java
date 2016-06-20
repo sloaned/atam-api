@@ -13,6 +13,7 @@ import org.springframework.data.mongodb.core.index.Indexed;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by dsloane on 5/25/2016.
@@ -29,7 +30,7 @@ public class TeamApi {
 
     private Boolean isActive;
 
-    private List<MemberApi> memberList;
+    private Set<MemberApi> memberList;
 
     private String avatar;
 
@@ -37,7 +38,7 @@ public class TeamApi {
             "255 characters.")
     private String description;
 
-    private List<ReviewPeriod> reviewPeriods;
+    private Set<ReviewPeriod> reviewPeriods;
 
     @Range(min = 1, max = 5)
     private Double summaryScore;
@@ -49,7 +50,7 @@ public class TeamApi {
         this.version = Constants.TEAM_CURRENT_VERSION;
     }
 
-    public TeamApi(String name, Boolean isActive, List<MemberApi> memberList, String avatar, String description, List<ReviewPeriod> reviewPeriods, Double summaryScore) {
+    public TeamApi(String name, Boolean isActive, Set<MemberApi> memberList, String avatar, String description, Set<ReviewPeriod> reviewPeriods, Double summaryScore) {
         this.name = name;
         this.isActive = isActive;
         this.memberList = memberList;
@@ -84,11 +85,11 @@ public class TeamApi {
         this.isActive = isActive;
     }
 
-    public List<MemberApi> getMemberList() {
+    public Set<MemberApi> getMemberList() {
         return memberList;
     }
 
-    public void setMemberList(List<MemberApi> memberList) {
+    public void setMemberList(Set<MemberApi> memberList) {
         this.memberList = memberList;
     }
 
@@ -108,11 +109,11 @@ public class TeamApi {
         this.description = description;
     }
 
-    public List<ReviewPeriod> getReviewPeriods() {
+    public Set<ReviewPeriod> getReviewPeriods() {
         return reviewPeriods;
     }
 
-    public void setReviewPeriods(List<ReviewPeriod> reviewPeriods) {
+    public void setReviewPeriods(Set<ReviewPeriod> reviewPeriods) {
         this.reviewPeriods = reviewPeriods;
     }
 

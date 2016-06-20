@@ -1,6 +1,6 @@
 package assessment.services;
 
-import assessment.entities.question.Question;
+import assessment.entities.Question;
 import assessment.services.interfaces.IQuestionService;
 import assessment.utilities.UrlConstants;
 import assessment.utilities.httpclient.jsonparser.DataJsonParser;

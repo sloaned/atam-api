@@ -2,6 +2,7 @@ package assessment.configuration;
 
 import assessment.services.DataImportService;
 import assessment.services.KudoService;
+import assessment.services.PeriodService;
 import assessment.services.UserService;
 import assessment.services.interfaces.IUserService;
 import org.apache.http.HttpException;
@@ -40,5 +41,10 @@ public class DataImportConfig {
                 e.printStackTrace();
             }
         }
+    }
+
+    private void addPreviousReviewPeriods() {
+        PeriodService periodService = new PeriodService();
+
     }
 }

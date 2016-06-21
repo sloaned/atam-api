@@ -10,9 +10,7 @@ import assessment.utilities.httpclient.jsonparser.DataJsonParser;
 import org.apache.http.HttpException;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @Service
 public class ReviewService extends BaseService<ReviewApi> implements IReviewApiService {
@@ -102,7 +100,7 @@ public class ReviewService extends BaseService<ReviewApi> implements IReviewApiS
     public List<ReviewApi> getReviewsByUser(String id) throws HttpException {
         ArrayList<ReviewApi> reviews = new ArrayList<ReviewApi>();
 
-        List<Review> reviewList = client.getAll(url, Review.class);
+        List<Review> reviewList = client.getAll(url + "?size=3000000", Review.class);
 
         for (Review review : reviewList) {
 
@@ -118,6 +116,16 @@ public class ReviewService extends BaseService<ReviewApi> implements IReviewApiS
             }
 
         }
+
+        Collections.sort(reviews, new Comparator<ReviewApi>() {
+            public int compare(ReviewApi review1, ReviewApi review2) {
+                if (review1.getSubmittedDate() == null || review2.getSubmittedDate() == null) {
+                    return 0;
+                }
+                return review1.getSubmittedDate().compareTo(review2.getSubmittedDate());
+            }
+        });
+        Collections.reverse(reviews);
 
         return reviews;
     }
@@ -142,6 +150,7 @@ public class ReviewService extends BaseService<ReviewApi> implements IReviewApiS
                 Period period = periodService.get(rp.getCurrentPeriodId());
                 ReviewApi reviewApi = getTeamReview(user.getId(), period.getReviews());
                 if (reviewApi != null) {
+                    System.out.println("adding review to reviews for user");
                     reviews.add(reviewApi);
                 }
             }
@@ -181,20 +190,23 @@ public class ReviewService extends BaseService<ReviewApi> implements IReviewApiS
         reviewApi.setReviewedId(reviewedId);
 
         Double average = 0.0;
+        int numReviews = 0;
 
         for (Review review : reviews) {
             reviewApi.setTeamName(review.getTeamName());
             if (review.getReviewedId().equals(reviewedId)) {
+                numReviews++;
+                System.out.println("got a review match, score = " + review.getSummaryScore());
                 average += review.getSummaryScore();
             }
 
         }
         // the user did not have any reviews in the list
-        if (average == 0.0) {
+        if (numReviews == 0) {
             return null;
         }
 
-        average = average/reviews.size();
+        average = average/numReviews;
         reviewApi.setSummaryScore(average);
 
         return reviewApi;

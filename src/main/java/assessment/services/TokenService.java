@@ -19,7 +19,7 @@ import java.util.List;
 public class TokenService extends BaseService<FCMTokenApi> implements ITokenApiService {
 
     public TokenService() {
-        super(UrlConstants.TOKEN_URL_TOKENS, FCMTokenApi.class, new DataJsonParser());
+        super(UrlConstants.BACKUP_URL_TOKENS, FCMTokenApi.class, new DataJsonParser());
     }
 
     public FCMTokenApi getTokenByUser(String id) throws HttpException {

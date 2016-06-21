@@ -31,6 +31,6 @@ public class Profile {
     public List<KudoApi> getKudos() {return kudos;}
     public void setTeams(ArrayList<TeamApi> teams) {this.teams = teams;}
     public List<TeamApi> getTeams() {return teams;}
-    public void setReviews(ArrayList<ReviewApi> reviews) {this.reviews = reviews;}
+    public void setReviews(ArrayList<ReviewApi> periods) {this.reviews = reviews;}
     public List<ReviewApi> getReviews() {return reviews;}
 }

@@ -5,9 +5,9 @@ public class UrlConstants {
     //TODO Change base url to reflect real server instead of localhost
     public static final String DATA_BASE_URL = "http://localhost";
     public static final String DATA_URL_PORT = "8080";
-    public static final String TOKEN_URL_PORT = "8070";
+    public static final String BACKUP_URL_PORT = "8070";
     public static final String DATA_URL = DATA_BASE_URL + ":" + DATA_URL_PORT;
-    public static final String TOKEN_URL = DATA_BASE_URL + ":" + TOKEN_URL_PORT;
+    public static final String BACKUP_URL = DATA_BASE_URL + ":" + BACKUP_URL_PORT;
     public static final String DATA_URL_USERS = DATA_URL + "/users";
     public static final String DATA_URL_QUESTIONS = DATA_URL + "/questions";
     public static final String DATA_URL_TEMPLATES = DATA_URL + "/templates";
@@ -27,5 +27,6 @@ public class UrlConstants {
     public static final String EMPLOYEE_URL_USER = EMPLOYEE_URL + "/user";
     public static final String EMPLOYEE_URL_PROJECT = EMPLOYEE_URL + "/project";
 
-    public static final String TOKEN_URL_TOKENS = TOKEN_URL + "/tokens";
+    public static final String BACKUP_URL_TOKENS = BACKUP_URL + "/tokens";
+    public static final String BACKUP_URL_PREVIOUS_PERIODS = BACKUP_URL + "/previousperiods";
 }

@@ -12,7 +12,7 @@ import java.util.Set;
 /**
  * Created by dsloane on 6/1/2016.
  */
-public class ReviewApi {
+public class ReviewApi implements Comparable<ReviewApi> {
 
     private String id;
     private String reviewedId;
@@ -108,6 +108,14 @@ public class ReviewApi {
                 ", summaryScore=" + summaryScore +
                 ", teamName=" + teamName +
                 "}";
+    }
+
+    @Override
+    public int compareTo(ReviewApi review) {
+        if (getSubmittedDate() == null || review.getSubmittedDate() == null) {
+            return 0;
+        }
+        return getSubmittedDate().compareTo(review.getSubmittedDate());
     }
 
 

@@ -1,11 +1,6 @@
 package assessment.services;
 
-import assessment.entities.KudoApi;
-import assessment.entities.Profile;
-import assessment.entities.ReviewApi;
-import assessment.entities.TeamApi;
-import assessment.entities.Kudo;
-import assessment.entities.User;
+import assessment.entities.*;
 import assessment.services.interfaces.IUserService;
 import assessment.utilities.UrlConstants;
 import assessment.utilities.httpclient.jsonparser.DataJsonParser;
@@ -41,11 +36,12 @@ public class UserService extends BaseService<User> implements IUserService {
         KudoService kudoService = new KudoService();
         TeamService teamService = new TeamService();
         ReviewService reviewService = new ReviewService();
+
         List<KudoApi> kudos = kudoService.getKudosByUser(id);
         List<TeamApi> teams = teamService.getTeamsByUser(id);
-        List<ReviewApi> reviews = reviewService.getMobileReviewsByUser(user, teams);
+        List<ReviewApi> reviews = reviewService.getReviewsByUser(id);
 
-        Profile profile = new Profile(user, kudos, teams, null);
+        Profile profile = new Profile(user, kudos, teams, reviews);
 
         return profile;
     }

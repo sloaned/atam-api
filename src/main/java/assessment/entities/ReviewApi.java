@@ -24,6 +24,7 @@ public class ReviewApi {
     @Range(min = 1, max = 5)
     private Double summaryScore;
 
+    public ReviewApi() {}
 
     public ReviewApi(String id, User reviewer, String reviewedId, Date submittedDate, Set<Feedback> feedback,
                   Double summaryScore, String teamName) {

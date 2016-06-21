@@ -13,6 +13,7 @@ public class UrlConstants {
     public static final String DATA_URL_TEMPLATES = DATA_URL + "/templates";
     public static final String DATA_URL_REVIEWS = DATA_URL + "/reviews";
     public static final String DATA_URL_TEAMS = DATA_URL + "/teams";
+    public static final String DATA_URL_PERIODS = DATA_URL + "/periods";
     public static final String DATA_URL_IMPORT = DATA_URL_USERS + "/import";
     public static final String DATA_URL_SYNC = DATA_URL + "/sync";
     public static final String DATA_URL_KUDO = DATA_URL + "/kudos";

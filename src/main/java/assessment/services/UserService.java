@@ -43,9 +43,9 @@ public class UserService extends BaseService<User> implements IUserService {
         ReviewService reviewService = new ReviewService();
         List<KudoApi> kudos = kudoService.getKudosByUser(id);
         List<TeamApi> teams = teamService.getTeamsByUser(id);
-        List<ReviewApi> reviews = reviewService.getReviewsByUser(id);
+        List<ReviewApi> reviews = reviewService.getMobileReviewsByUser(user, teams);
 
-        Profile profile = new Profile(user, kudos, teams, reviews);
+        Profile profile = new Profile(user, kudos, teams, null);
 
         return profile;
     }
